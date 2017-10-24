@@ -21,7 +21,7 @@ if not os.path.exists(savedir):
 flickr = FlickrAPI(key,secret,format = 'parsed-json')
 res = flickr.photos.search(
     text = keyword,
-    per_page = 500,
+    per_page = 310,
     media = 'photos',
     sort = "relevance",
     safe_search = 1,

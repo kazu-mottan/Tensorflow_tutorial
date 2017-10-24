@@ -10,16 +10,16 @@ def glob_images(path,label,max_photo):
     files = glob.glob(path + "/*.jpg")
     random.shuffle(files)
     for i,f in enumerate(files):
-        if i >= max_photo* break
+        if i >= max_photo: break
         img = Image.open(f)
         img = img.convert("RGB")
-        img = imag.resize((photo_size,photo_size,3))
+        img = img.resize((photo_size,photo_size,))
         data = np.asarray(img)
         data = data /256
         data = data.reshape(photo_size,photo_size,3)
         x.append(data)
         y.append(label)
-def make _dataset(max_photo,outfile):
+def make_dataset(max_photo,outfile):
     global x
     global y
     x = []
@@ -28,7 +28,7 @@ def make _dataset(max_photo,outfile):
     glob_images("./sunflower-ok",1,max_photo)
     glob_images("./rose-ok",2,max_photo)
     x = np.array(x,dtype=np.float32)
-    np.savez(outfile,x = x,y = y)
+    np.savez(outfile,x=x,y=y)
     print("saved:" + outfile)
 
 make_dataset(100,"photo-min.npz")

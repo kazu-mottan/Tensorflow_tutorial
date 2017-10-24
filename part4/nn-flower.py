@@ -1,7 +1,8 @@
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Activation,Dropout,Dense
-from keras.utils import up_utils
+from keras.utils import np_utils
+import numpy as np
 
 # 変数の制限
 classes = 3
@@ -13,7 +14,7 @@ def main():
     y = data["y"]
     x = np.reshape(x,(-1,data_size))
     x_train,x_test,y_train,y_test = train_test_split(x,y)
-    model = trann(x_train,y_train)
+    model = train(x_train,y_train)
     model_eval(model,x_test,y_test)
 
 def train(x,y):
